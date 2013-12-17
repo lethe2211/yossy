@@ -1,0 +1,32 @@
+<!-- Edit -->
+<div id="column">
+
+  <%= render 'booklist/titlebar' %>
+
+  <%= render 'booklist/statusbar', :current_page => '蔵書情報変更' %>
+
+  <%= render 'booklist/menubar' %>
+
+  <div id="main">
+
+    <!-- Notice -->
+    <div class="notice">
+      <%= params[:notice] %>
+    </div>
+
+    蔵書情報を変更してください．<br><br>
+
+    <%= render "booklist/book", :book => @booklist %><br>
+
+    <%= form_for @booklist, :url => {:action => "update"} do |f| %>
+    <table>
+      <%= render "booklist/form_edit", :f => f %>
+      <tr>
+	<td><%= f.submit "蔵書情報を変更", :class => "submit" %></td>
+      </tr>
+    </table>
+    <% end %>
+    
+  </div>
+
+</div>

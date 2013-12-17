@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  isbn: MyString
+  name: MyString
+  place: MyString
+  room: MyString
+  shelf: MyString
+  acquired_at: 2013-07-02
+  checked_at: 2013-07-02
+  borrowed_by: MyString
+
+two:
+  isbn: MyString
+  name: MyString
+  place: MyString
+  room: MyString
+  shelf: MyString
+  acquired_at: 2013-07-02
+  checked_at: 2013-07-02
+  borrowed_by: MyString

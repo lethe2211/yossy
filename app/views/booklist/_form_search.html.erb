@@ -1,0 +1,36 @@
+<tr>
+  <td><%= label_tag :isbn, 'ISBN' %></td>
+  <td><%= text_field_tag :isbn, params[:isbn], :type => 'number', :placeholder => "例：4844331566" %></td>
+</tr>
+
+<tr>
+  <td><%= label_tag :name, '書名' %></td>
+  <td><%= text_field_tag :name, params[:name], :size => 40, :placeholder => "例：基礎Ruby　on　Rails改訂新版" %></td>
+</tr>
+
+<tr>
+  <td><%= label_tag :place, '場所' %></td>
+  <td><%= text_field_tag :place, params[:place], :size => 20, :placeholder => "例：先端棟" %></td>
+</tr>
+
+<tr>
+  <td><%= label_tag :room, '部屋' %></td>
+  <td><%= text_field_tag :room, params[:room], :size => 15, :placeholder => "例：514" %></td>
+</tr>
+
+<tr>
+  <td><%= label_tag :shelf, '棚' %></td>
+  <td><%= text_field_tag :shelf, params[:shelf], :size => 15, :placeholder => "例：1研棚A" %></td>
+</tr>
+
+<tr>
+  <td><%= label_tag :acquired_at, '取得日' %></td>
+  <td><%= text_field_tag :acquired_at, params[:acquired_at], :type => 'date' %></td>
+</tr>
+
+<tr>
+  <td><%= label_tag :borrowed_by, '借用者' %></td>
+  <td><%= text_field_tag :borrowed_by, params[:borrowed_by], :size => 20, :placeholder => "例：shogen" %></td>
+</tr>
+
+

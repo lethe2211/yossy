@@ -1,0 +1,14 @@
+<!-- Menubar (Left side of pages) -->
+<div id="menubar">
+  <ul>
+    <li><%= button_to "トップページ", {:controller => "booklist", :action => "index"}, :method => "get", :class => "menubar_button" %></li>
+
+    <li><%= button_to "検索", {:controller => "booklist", :action => "search"}, :method => "get",  :class => "menubar_button" %></li>
+
+    <li><%= button_to "新規蔵書登録", {:controller => "booklist", :action => "new"}, :method => "get", :class => "menubar_button" %></li>
+
+    <li><%= button_to "使い方", {:controller => "booklist", :action => "howto"}, :method => "get", :class => "menubar_button" %></li>
+
+    <li><%= button_to "ログアウト", "/sessions/logout", :method => "get", :class => "menubar_button" %></li>
+  </ul>
+</div>

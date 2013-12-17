@@ -1,0 +1,49 @@
+<!-- Form for add  -->
+
+<!-- If your input is invalid, system outputs alerts -->
+<% if @booklist.errors.any? %>
+<% @booklist.errors.full_messages.each do |msg| %>
+<div class="alert">
+  <% if @booklist.errors.count == 1 %>
+  <%= render :text => @booklist.errors.count.to_s + " error" %>
+  <% else %>
+  <%= render :text => @booklist.errors.count.to_s + " errors" %>
+  <% end %>
+  <ul>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<!-- Form -->
+<tr>
+  <td><%= f.label :isbn, 'ISBN(10桁か13桁の数字)' %></td>
+  <td><%= f.text_field :isbn, :type => 'number', :size => 40, :placeholder => "例：4844331566", :required => "true" %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :name, '書名' %></td>
+  <td><%= f.text_field :name, :size => 40, :placeholder => "例：基礎Ruby　on　Rails改訂新版" %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :place, '場所' %></td>
+  <td><%= f.text_field :place, :size => 10, :placeholder => "例：先端棟" %></td> 
+</tr>
+
+<tr>
+  <td><%= f.label :room, '部屋' %></td>
+  <td><%= f.text_field :room, :size => 10, :placeholder => "例：514" %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :shelf, '棚' %></td>
+  <td><%= f.text_field :shelf, :size => 10, :placeholder => "例：1研棚A" %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :acquired_at, '取得日' %></td>
+  <td><%= f.text_field :acquired_at, :type => 'date' %></td>
+</tr>
+

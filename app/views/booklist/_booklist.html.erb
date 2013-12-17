@@ -1,0 +1,32 @@
+<table id="booklist">
+  <thead>
+    <tr>
+      <th>蔵書ID</th>
+      <th>ISBN</th>
+      <th>書名</th>
+      <th>場所</th>
+      <th>部屋</th>
+      <th>棚</th>
+      <th>取得日</th>
+      <th>借用者</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% booklist.each do |book| %>
+    <tr>
+      <td><%= link_to book.id, booklist_path(book) %></td>
+      <td><%= book.isbn %></td>
+      <td><%= book.name %></td>
+      <td><%= book.place %></td>
+      <td><%= book.room %></td>
+      <td><%= book.shelf %></td>
+      <td><%= book.acquired_at %></td>
+      <td><%= book.borrowed_by %></td>
+      <td><%= link_to "変更", edit_booklist_path(book) %></td>
+      <td><%= link_to "消去", booklist_path(book), :method => "delete", :confirm => "本当に消去しますか？" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

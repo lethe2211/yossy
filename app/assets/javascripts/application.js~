@@ -1,0 +1,60 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// the compiled file.
+//
+// WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
+// GO AFTER THE REQUIRES BELOW.
+//
+//= require jquery
+//= require jquery_ujs
+//= require_tree .
+
+$("document").ready(function() {
+
+
+    $("#form_new_room").show();
+    $(".form_new_shelf").hide();
+    $("#form_new_shelf_519").show();
+
+    
+    $("#form_new_place").change(function() {
+	if($("#form_new_place option:selected").val() == '先端棟') {
+	    $("#form_new_room").show();
+	    $("#form_new_room select").val('519');
+	    $("#form_new_shelf_519").show();
+	    $("#form_new_shelf_519 select").val('吉川部屋');
+	}
+	else {
+	    $("#form_new_room").hide();
+	    $("#form_new_room select").val('');
+	    $(".form_new_shelf").hide();
+	    $(".form_new_shelf select").val('');
+	}
+    });
+
+    $("#form_new_room").change(function() {
+	var selected = $("#form_new_room option:selected").val();
+	$(".form_new_shelf").hide();
+	$("#form_new_shelf_" + selected).show()
+
+	switch(selected) {
+
+	case '519':
+	    $("#form_new_shelf_519 select").val('吉川部屋');
+	    break;
+	case '524':
+	    $("#form_new_shelf_524 select").val('1研棚A');
+	    break;
+	case '537':
+	    $("#form_new_shelf_537 select").val('2研棚A');
+	    break;
+
+	}
+    });
+
+});

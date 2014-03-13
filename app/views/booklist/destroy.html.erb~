@@ -1,0 +1,9 @@
+<div style="height:50px;background-color:#C0C0C0;">
+  <h1>研究室蔵書データベース 蔵書登録削除ページ</h1>
+</div>
+
+<%= render 'booklist/menubar' %>
+
+<div id="main">
+  蔵書ID: <%= @booklist.id %>の削除を行いました．
+</div>

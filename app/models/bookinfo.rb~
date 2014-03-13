@@ -1,0 +1,3 @@
+class Bookinfo < ActiveRecord::Base
+  attr_accessible :isbn, :itemCaption, :largeImageUrl, :listPrice, :publisherName, :salesDate, :seriesName, :seriesNameKana, :subTitle, :subTitleKana, :title, :titleKana
+end

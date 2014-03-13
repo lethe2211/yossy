@@ -1,0 +1,24 @@
+<div id="column">
+
+  <%= render 'booklist/titlebar' %>
+
+  <%= render 'booklist/statusbar', :current_page => '検索' %>
+
+  <%= render 'booklist/menubar' %>
+
+  <div id="main">
+    以下に検索条件を指定してください．<br>
+    空値の項目は<b>「指定なし」</b>として検索します．<br>
+
+    <%= form_tag(:controller => "booklist", :action => "result") do %>
+    <table>
+      <%= render "booklist/form_search" %>
+      <tr>
+	<td><%= submit_tag "検索", :class => "submit" %></td>
+      </tr>
+    </table>
+    <% end %>
+
+  </div>
+
+</div>

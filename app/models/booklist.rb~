@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+# Booklist model
+class Booklist < ActiveRecord::Base
+  # One-to-many relationship between booklist and bookinfo
+  belongs_to :bookinfo
+
+  attr_accessible :acquired_at, :borrowed_by, :checked_at, :isbn, :name, :place, :room, :shelf
+  
+  # Validation (You must add or update record where the length of "isbn" is 10 or 13)
+  validates_format_of :isbn, with: /[0-9]{10}|[0-9]{13}/, :message => "は10桁か13桁の数字です．"
+end

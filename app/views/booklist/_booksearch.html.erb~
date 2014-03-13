@@ -1,0 +1,97 @@
+以下は楽天ブックス書籍検索API2による検索結果です．<br><br>
+
+<%= image_tag item.largeImageUrl, :id => "booksearch_image" %>
+
+<table id="booksearch">
+  <tbody>
+    <tr>
+      <th>
+	ISBN
+      </th>
+      <td>
+	<%= render :text => item.isbn %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+	書名
+      </th>
+      <td>
+	<%= render :text => item.title %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+	書名(カナ)
+      </th>
+      <td>
+	<%= render :text => item.titieKana %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+	サブタイトル
+      </th>
+      <td>
+	<%= render :text => item.subTitle %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+	サブタイトル(カナ)
+      </th>
+      <td>
+	<%= render :text => item.subTitleKana %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+	シリーズ名
+      </th>
+      <td>
+	<%= render :text => item.seriesName %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+	シリーズ名(カナ)
+      </th>
+      <td>
+	<%= render :text => item.seriesNameKana %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+	出版社
+      </th>
+      <td>
+	<%= render :text => item.publisherName %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+	価格
+      </th>
+      <td>
+	<%= render :text => item.listPrice.to_s + ' yen'%>
+      </td>
+    </tr>
+    <tr>
+      <th>
+	発売日
+      </th>
+      <td>
+	<%= render :text => item.salesDate %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+	説明
+      </th>
+      <td>
+	<%= render :text => item.itemCaption %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

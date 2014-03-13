@@ -1,0 +1,25 @@
+<div id="login_form">
+
+  <div id="login_title">Login Form</div><br>
+
+  <%= form_tag sessions_path, :id => "login" do %>
+
+  <%= label_tag :name, 'アカウント名' %><br>
+  <%= text_field_tag :name, params[:name] %>
+  <br><br>
+
+
+  <%= label_tag :pass, 'パスワード' %><br>
+  <%= password_field_tag :pass, params[:pass] %>
+  <br><br>
+
+
+  <%= submit_tag("ログイン", :class => "submit") %>
+
+  <% end %>
+
+</div>
+
+
+
+

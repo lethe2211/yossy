@@ -1,0 +1,50 @@
+<% if @booklist.errors.any? %>
+<% @booklist.errors.full_messages.each do |msg| %>
+<div class="alert">
+  <% if @booklist.errors.count == 1 %>
+  <%= render :text => @booklist.errors.count.to_s + " error" %>
+  <% else %>
+  <%= render :text => @booklist.errors.count.to_s + " errors" %>
+  <% end %>
+  <br>
+  <ul>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<tr>
+  <td><%= f.label :isbn, 'ISBN' %></td>
+  <td><%= f.text_field :isbn, :type => 'number' %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :name, '書名' %></td>
+  <td><%= f.text_field :name, :size => 40 %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :place, '場所' %></td>
+  <td><%= f.text_field :place, :size => 10 %></td> 
+</tr>
+
+<tr>
+  <td><%= f.label :room, '部屋' %></td>
+  <td><%= f.text_field :room, :size => 10 %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :shelf, '棚' %></td>
+  <td><%= f.text_field :shelf, :size => 10 %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :acquired_at, '取得日' %></td>
+  <td><%= f.text_field :acquired_at, :type => 'date' %></td>
+</tr>
+
+<tr>
+  <td><%= f.label :borrowed_by, '借用者' %></td>
+  <td><%= f.text_field :borrowed_by, :size => 20 %></td>
+</tr>

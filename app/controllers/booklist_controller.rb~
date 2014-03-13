@@ -42,10 +42,6 @@ class BooklistController < ApplicationController
 
       @bookinfo = Bookinfo.new({"isbn" => @item["isbn"], "title" => @item["title"], "titleKana" => @item["titleKana"], "subTitle" => @item["subTitle"], "subTitleKana" => @item["subTitleKana"], "seriesName" => @item["seriesName"], "seriesNameKana" => @item["seriesNameKana"], "publisherName" => @item["publisherName"], "listPrice" => @item["listPrice"], "salesDate" => @item["salesDate"], "itemCaption" => @item["itemCaption"], "largeImageUrl" => @item["largeImageUrl"]})
       @bookinfo.save
-
-      if @item["title"]
-        @booklist.name = @item["title"] # The name of booklist is the same as the title of book
-      end
     rescue
 
     end
@@ -76,7 +72,7 @@ class BooklistController < ApplicationController
     if @booklist.update_attributes(params[:booklist])
       redirect_to :controller => "booklist", :action => "edit", :notice => '蔵書の情報変更を行いました．'
     else
-      render :controller => "booklist", :action => "edit"
+      render :controller => "booklist", :action => "edit", :notice => 'hogehoge'
     end
   end
 

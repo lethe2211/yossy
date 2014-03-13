@@ -1,6 +1,3 @@
-<!-- Form for add  -->
-
-<!-- If your input is invalid, system outputs alerts -->
 <% if @booklist.errors.any? %>
 <% @booklist.errors.full_messages.each do |msg| %>
 <div class="alert">
@@ -16,16 +13,15 @@
 </div>
 <% end %>
 
-<!-- Form -->
 <tr>
   <td><%= f.label :isbn, 'ISBN(10桁か13桁の数字)' %></td>
-  <td><%= f.text_field :isbn, :type => 'number', :size => 40, :placeholder => "例：4844331566", :required => "true", :autofocus => "true" %></td>
+  <td><%= f.text_field :isbn, :type => 'number', :size => 40, :placeholder => "例：4844331566", :required => "true" %></td>
 </tr>
 
-<!-- <tr> -->
-<!--   <td><%= f.label :name, '書名' %></td> -->
-<!--   <td><%= f.text_field :name, :size => 40, :placeholder => "例：基礎Ruby　on　Rails改訂新版" %></td> -->
-<!-- </tr> -->
+<tr>
+  <td><%= f.label :name, '書名' %></td>
+  <td><%= f.text_field :name, :size => 40, :placeholder => "例：基礎Ruby　on　Rails改訂新版" %></td>
+</tr>
 
 <tr>
   <td><%= f.label :place, '場所' %></td>

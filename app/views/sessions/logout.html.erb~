@@ -1,0 +1,2 @@
+<h1>ログアウトしました．</h1>
+<%= link_to "ログイン画面に戻る", {:controller => "sessions", :action => "new"} %>

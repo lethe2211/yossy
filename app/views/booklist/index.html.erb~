@@ -1,0 +1,20 @@
+<!-- Index -->
+<div id="column">
+
+  <%= render 'booklist/titlebar' %>
+
+  <%= render 'booklist/statusbar', :current_page => 'トップページ' %>
+
+  <%= render 'booklist/menubar' %>
+
+  <div id="main">
+    研究室蔵書データベースへようこそ．<br>
+    使用方法に関しては，<%= link_to "使い方", {:controller => "booklist", :action => "howto"} %> をご覧ください．<br><br><br>
+
+    最近追加された書籍<br>
+    <%= render "booklist/booklist", :booklist => @updated %>
+
+    <br><br>
+  </div>
+
+</div>

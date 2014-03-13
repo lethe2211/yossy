@@ -3,7 +3,7 @@
 
   <%= render 'booklist/titlebar' %>
 
-  <%= render 'booklist/statusbar', :current_page => '蔵書ID:' + @booklist.id.to_s + ' の詳細' %>
+  <%= render 'booklist/statusbar', :current_page => '書名: ' + @booklist.name + ' の詳細' %>
 
   <%= render 'booklist/menubar' %>
 
@@ -11,7 +11,7 @@
     <%= render "booklist/book", :book => @booklist %>
 
     <!-- If there are no item which hit bookinfos -->
-    <% unless @bookinfo %>
+    <% if @bookinfo == nil %>
 
     この書籍についての書籍情報は見つかりませんでした．
     

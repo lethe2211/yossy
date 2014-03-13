@@ -1,0 +1,15 @@
+<div id="column">
+
+  <%= render 'booklist/titlebar' %>
+
+  <%= render 'booklist/statusbar', :current_page => '使い方' %>
+
+  <%= render 'booklist/menubar' %>
+
+  <div id="main">
+    蔵書を検索する際は，<%= link_to "検索", {:controller => "booklist", :action => "search"} %>ページにお進みください．<br>
+    蔵書ID，ISBN，書名，棚IDから蔵書の検索を行うことができます．<br><br>
+
+  </div>
+
+</div>

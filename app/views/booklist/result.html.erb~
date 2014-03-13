@@ -1,0 +1,25 @@
+<div id="column">
+
+  <%= render 'booklist/titlebar' %>
+
+  <%= render 'booklist/statusbar', :current_page => '検索結果' %>
+
+  <%= render 'booklist/menubar' %>
+
+  <div id="main">
+    検索結果は以下の<%= @result.count %>件でした．<br><br>
+
+    <%= render "booklist/booklist", :booklist => @result %>
+    <br><br>
+
+    絞り込み検索
+    <%= form_tag :url => {:action => "result"} do %>
+    <table>
+      <%= render "booklist/form_search" %>
+      <tr>
+	<td><%= submit_tag "検索", :class => "submit" %></td>
+      </tr>
+    </table>
+    <% end %>
+  </div>
+</div>

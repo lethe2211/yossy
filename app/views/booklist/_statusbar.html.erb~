@@ -1,0 +1,5 @@
+<div id="statusbar">
+  <p>
+  <%= current_page %>
+  </p>
+</div>

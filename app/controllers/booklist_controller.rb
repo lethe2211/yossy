@@ -16,10 +16,10 @@ class BooklistController < ApplicationController
   # /booklist/:id
   def show
     @booklist = Booklist.find(params[:id])
-
+    logger.debug("\n\n\n\n\n" + @booklist.inspect + "\n\n\n\n")
     # Get bookinfo corresponding the book in library
     @bookinfo = Bookinfo.find(:first, :conditions => {:isbn => @booklist.isbn})
-
+    logger.debug("\n\n\n\n\n" + @bookinfo.inspect + "\n\n\n\n")
   end
 
   # /booklist/new
@@ -42,7 +42,7 @@ class BooklistController < ApplicationController
 
       @bookinfo = Bookinfo.new({"isbn" => @item["isbn"], "title" => @item["title"], "titleKana" => @item["titleKana"], "subTitle" => @item["subTitle"], "subTitleKana" => @item["subTitleKana"], "seriesName" => @item["seriesName"], "seriesNameKana" => @item["seriesNameKana"], "publisherName" => @item["publisherName"], "listPrice" => @item["listPrice"], "salesDate" => @item["salesDate"], "itemCaption" => @item["itemCaption"], "largeImageUrl" => @item["largeImageUrl"]})
       @bookinfo.save
-
+      
       if @item["title"]
         @booklist.name = @item["title"] # The name of booklist is the same as the title of book
       end
@@ -121,7 +121,11 @@ class BooklistController < ApplicationController
   def getBookInfo(isbn) 
     url = 'https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522?format=json&applicationId=1075347747100807178&isbn=' + isbn
 
-    json = JSON.load(open(url))
+    
+    logger.debug(url)
+    json = JSON.load(open(url, proxy: "http://proxy.kuins.net:8080/"))
+    logger.debug(json.inspect)
+    logger.debug(json["Items"][0]["Item"])
     return json["Items"][0]["Item"]
   end
 

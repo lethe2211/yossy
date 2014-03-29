@@ -43,20 +43,6 @@ ActiveRecord::Schema.define(:version => 20130720105844) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "books", :force => true do |t|
-    t.string   "name"
-    t.date     "acquired_date"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  create_table "items", :force => true do |t|
-    t.string   "name"
-    t.string   "pass"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "password_digest"

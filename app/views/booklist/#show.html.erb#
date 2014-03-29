@@ -1,0 +1,25 @@
+<!-- Detail of libary and book information -->
+<div id="column">
+
+  <%= render 'booklist/titlebar' %>
+
+  <%= render 'booklist/statusbar', :current_page => '蔵書ID:' + @booklist.id.to_s + ' の詳細' %>
+
+  <%= render 'booklist/menubar' %>
+
+  <div id="main">
+    <%= render "booklist/book", :book => @booklist %>
+    
+    <!-- If there are no item which hit bookinfos -->
+    <% unless @bookinfo %>
+
+    この書籍についての書籍情報は見つかりませんでした．
+    
+    <% else %>
+
+    <%= render "booklist/booksearch", :item => @bookinfo %>
+
+    <% end %>
+  </div>
+
+</div>

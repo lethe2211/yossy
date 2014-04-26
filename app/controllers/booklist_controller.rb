@@ -16,10 +16,8 @@ class BooklistController < ApplicationController
   # /booklist/:id
   def show
     @booklist = Booklist.find(params[:id])
-    logger.debug("\n\n\n\n\n" + @booklist.inspect + "\n\n\n\n")
     # Get bookinfo corresponding the book in library
     @bookinfo = Bookinfo.find(:first, :conditions => {:isbn => @booklist.isbn})
-    logger.debug("\n\n\n\n\n" + @bookinfo.inspect + "\n\n\n\n")
   end
 
   # /booklist/new
@@ -103,7 +101,7 @@ class BooklistController < ApplicationController
     @borrowed_by = params[:borrowed_by]
     
     # Search (If each parameter is '', system regards it as wild card)
-    @result = Booklist.find_by_sql(["select * from booklists where (isbn = :isbn or :isbn = '') and (name = :name or :name = '') and (place = :place or :place = '') and (room = :room or :room = '') and (shelf = :shelf or :shelf = '') and (acquired_at = :acquired_at or :acquired_at = '') and (borrowed_by = :borrowed_by or :borrowed_by = '')", :isbn => @isbn, :name => @name, :place => @place, :room => @room, :shelf => @shelf, :acquired_at => @acquired_at, :borrowed_by => @borrowed_by])  
+    @result = Booklist.find_by_sql(["select * from booklists where (isbn = :isbn or :isbn = '') and (name like :name or :name like '') and (place like :place or :place like '') and (room like :room or :room like '') and (shelf like :shelf or :shelf like '') and (acquired_at = :acquired_at or :acquired_at = '') and (borrowed_by = :borrowed_by or :borrowed_by = '')", :isbn => @isbn, :name => '%' + @name + '%', :place => '%' + @place + '%', :room => '%' + @room + '%', :shelf => '%' + @shelf + '%', :acquired_at => @acquired_at, :borrowed_by => @borrowed_by])  
   end
 
   private

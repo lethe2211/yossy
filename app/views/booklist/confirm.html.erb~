@@ -1,0 +1,55 @@
+<div id="column">
+
+  <%= render 'booklist/titlebar' %>
+
+  <%= render 'booklist/statusbar', :current_page => '新規蔵書登録' %>
+
+  <%= render 'booklist/menubar' %>
+
+  <div id="main">
+    <div class="notice">
+      <%= render :text => params["notice"] %>
+    </div>
+
+    以下の内容でよろしいですか？<br><br>
+
+    <!-- <%= form_for @booklist, :url => {:action => "create"} do |f| %> -->
+    <!-- <table> -->
+    <!--   <%= render "booklist/form_new", :f => f %> -->
+    <!--   <tr> -->
+    <!-- 	<td><%= f.submit "蔵書に追加", :class => "submit" %></td> -->
+    <!--   </tr> -->
+    <!-- </table> -->
+    <!-- <% end %> -->
+
+    <table>
+      <tr>
+	<td><%= 'ISBN(10桁か13桁の数字)' %></td>
+	<td><%= @booklist.isbn %></td>
+      </tr>
+      <tr>
+	<td><%= '場所' %></td>
+	<td><%= @booklist.place %></td>
+      </tr>
+      <tr>
+	<td><%= '部屋' %></td>
+	<td><%= @booklist.room %></td>
+      </tr>
+      <tr>
+	<td><%= '棚' %></td>
+	<td><%= @booklist.shelf %></td>
+      </tr>
+      <tr>
+	<td><%= '取得日' %></td>
+	<td><%= @booklist.acquired_at %></td>
+      </tr>
+    </table>
+
+    <%= button_to '蔵書に追加', { :action => 'create',
+    :booklist => params[:booklist] }, :method => 'post' %>
+    <%= button_to '戻る', :action => 'new', :class => 'submit' %>
+
+    <%= render 'booklist/booksearch', :item => @bookinfo %>
+  </div>
+
+</div>

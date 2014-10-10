@@ -61,12 +61,14 @@ Infosys::Application.routes.draw do
   get "sessions/logout"
 
   post "booklist/new" => "booklist#new"
+  post 'booklist/confirm'
   post "booklist/create" => "booklist#create"
   post "booklist/result" => "booklist#result"
 
   get "booklist/search"
   get "booklist/howto"
   get "booklist/result"
+
 
   resources :booklist
   resources :sessions 

@@ -1,0 +1,100 @@
+<div id="column">
+
+  <%= render 'booklist/titlebar' %>
+
+  <%= render 'booklist/statusbar', :current_page => '新規蔵書登録' %>
+
+  <%= render 'booklist/menubar' %>
+
+  <div id="main">
+    <div class="notice">
+      <%= render :text => params["notice"] %>
+    </div>
+
+    以下の内容でよろしいですか？<br><br>
+
+    <table>
+      <tr>
+	<td><%= 'ISBN(10桁か13桁の数字)' %></td>
+	<td><%= @booklist.isbn %></td>
+      </tr>
+      <tr>
+	<td><%= '場所' %></td>
+	<td>
+	  <% if @booklist.place != '' %>
+	  <%= @booklist.place %>
+	  <% else %>
+	  <%= '記述なし' %>
+	  <% end %>
+	</td>
+      </tr>
+      <tr>
+	<td><%= '部屋' %></td>
+	<td>
+	  <% if @booklist.room != '' %>
+	  <%= @booklist.room %>
+	  <% else %>
+	  <%= '記述なし' %>
+	  <% end %>
+	</td>
+      </tr>
+      <tr>
+	<td><%= '棚' %></td>
+	<td>
+	  <% if @booklist.shelf != '' %>
+	  <%= @booklist.shelf %>
+	  <% else %>
+	  <%= '記述なし' %>
+	  <% end %>
+	</td>
+      </tr>
+      <tr>
+	<td><%= '取得日' %></td>
+	<td>
+	  <%# TODO: 取得日が空値の時'記述なし'が出ないのを直す %>
+	  <% if @booklist.acquired_at != '' %>
+	  <%= @booklist.acquired_at %>
+	  <% else %>
+	  <%= '記述なし' %>
+	  <% end %>
+	</td>
+      </tr>
+    </table>
+    <br>
+
+    <% unless @bookinfo %>
+
+    この書籍についての書籍情報は見つかりませんでした．<br>
+    ISBNの値を確認してください．<br><br>
+
+    <!-- comment out -->
+    <% if false %>
+    ISBNの値を確認し，誤りがあった場合は，「修正」ボタンをクリックして再度入力してください．<br><br>
+    
+    ISBNの値に誤りがなく，実際にこの書籍が存在する場合に限り，下記のフォームに書名を入力して，「蔵書に追加」ボタンをクリックしてください．
+    <% form_for @bookinfo, :url => { :action => 'create' } do |f| %>
+    <table>
+      <tr>
+    	<td><%= f.label :title, '書名' %></td>
+    	<td><%= f.text_field :title, @bookinfo.title %></td>
+      </tr>
+    </table>
+    <% end %>
+    <% end %>
+    <!-- comment out end -->
+
+    <% else %>
+
+    <%= render 'booklist/booksearch', :item => @bookinfo %>
+
+    問題がなければ，「蔵書に追加」ボタンをクリックしてください．<br>
+    修正点がある場合は，「修正」ボタンをクリックしてください．
+    <% end %>
+
+    <%= button_to '蔵書に追加', { :action => 'create',
+    :booklist => params[:booklist] }, :class => 'submit', :method => 'post' %>
+    <%= button_to '修正', { :action => 'new' }, :class => 'submit' %>
+
+  </div>
+
+</div>

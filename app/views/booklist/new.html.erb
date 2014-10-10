@@ -15,11 +15,11 @@
     新しい蔵書を追加してください．<br>
     空値の項目は<b>「指定なし」</b>としてデータベースに追加されます．<br><br>
 
-    <%= form_for @booklist, :url => {:action => "create"} do |f| %>
+    <%= form_for @booklist, :url => {:action => "confirm"} do |f| %>
     <table>
       <%= render "booklist/form_new", :f => f %>
       <tr>
-	<td><%= f.submit "蔵書に追加", :class => "submit" %></td>
+	<td><%= f.submit '確認', :class => "submit" %></td>
       </tr>
     </table>
     <% end %>

@@ -32,8 +32,10 @@ class BooklistController < ApplicationController
 
   # /booklist/create
   def create  
+    Rails.logger.debug('booklist:')
+    Rails.logger.debug(params[:booklist])
     @booklist = Booklist.new(params[:booklist])
-
+    
     # Get information of books and add it into Bookinfo model
     begin
       @item = getBookInfo(@booklist.isbn)
@@ -55,6 +57,15 @@ class BooklistController < ApplicationController
       render :controller => "booklist", :action =>"new"
     end  
   end  
+
+  def confirm
+    @booklist = Booklist.new(params[:booklist])
+    
+    @item = getBookInfo(@booklist.isbn)
+
+    @bookinfo = Bookinfo.new({"isbn" => @item["isbn"], "title" => @item["title"], "titleKana" => @item["titleKana"], "subTitle" => @item["subTitle"], "subTitleKana" => @item["subTitleKana"], "seriesName" => @item["seriesName"], "seriesNameKana" => @item["seriesNameKana"], "publisherName" => @item["publisherName"], "listPrice" => @item["listPrice"], "salesDate" => @item["salesDate"], "itemCaption" => @item["itemCaption"], "largeImageUrl" => @item["largeImageUrl"]}) if @item
+
+  end
 
   # /booklist/update
   def update
@@ -118,13 +129,16 @@ class BooklistController < ApplicationController
   # Call "楽天ブックス書籍検索API2" and get information of books as JSON
   def getBookInfo(isbn) 
     url = 'https://app.rakuten.co.jp/services/api/BooksBook/Search/20130522?format=json&applicationId=1075347747100807178&isbn=' + isbn
-
     
     logger.debug(url)
     json = JSON.load(open(url, proxy: "http://proxy.kuins.net:8080/"))
     logger.debug(json.inspect)
-    logger.debug(json["Items"][0]["Item"])
-    return json["Items"][0]["Item"]
+    if json['Items'].empty?
+      return nil
+    else
+      logger.debug(json["Items"][0]["Item"])
+      return json["Items"][0]["Item"]
+    end
   end
 
 end
